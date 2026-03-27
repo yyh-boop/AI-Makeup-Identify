@@ -1,4 +1,28 @@
-# DIRE for Diffusion-Generated Image Detection (ICCV 2023)
+# 扩散生成图像检测（DIRE）
+
+本仓库实现 **DIRE**（*Diffusion Reconstruction Error*）：利用预训练扩散模型对输入图像做重建，通过重建误差区分**真实照片**与**扩散模型生成图像**，适用于 ICCV 2023 论文 [DIRE for Diffusion-Generated Image Detection](https://arxiv.org/abs/2303.09295) 中的训练、测试与推理流程。
+
+**仓库内容概览**
+
+| 模块 | 说明 |
+|------|------|
+| `train.py` / `train.sh` | 训练检测模型 |
+| `test.py` / `test.sh`、`demo.py` | 评估与单图/文件夹推理 |
+| `guided-diffusion/` | DIRE 特征与扩散相关代码 |
+| `networks/`、`utils/` | 分类网络与工具 |
+| `wechat_api_server.py` | Flask 后端，供小程序上传图片并返回 AI/真实概率 |
+| `miniprogram/` | 微信小程序前端 |
+| `web/` | 简单网页相关资源 |
+
+**环境与依赖**：Python 3.9 建议配合 PyTorch（CUDA 按本机环境选择），执行 `pip install -r requirements.txt`。训练前需按原论文说明准备 **DiffusionForensics 数据集** 与 **预训练权重**（见下文官方下载链接；本仓库默认不包含大型数据与 checkpoint）。
+
+**微信小程序与 HTTP 接口**：本地启动推理服务、配置请求域名与开发者工具，见 **[README_MINIPROGRAM.md](README_MINIPROGRAM.md)**。
+
+---
+
+## 以下为原论文与官方说明（英文）
+
+## DIRE for Diffusion-Generated Image Detection (ICCV 2023)
 <b> <a href='https://zhendongwang6.github.io/'>Zhendong Wang</a>, <a href='https://jianminbao.github.io/'>Jianmin Bao</a>, <a href='http://staff.ustc.edu.cn/~zhwg/'>Wengang Zhou</a>, Weilun Wang, Hezhen Hu, Hong Chen, <a href='http://staff.ustc.edu.cn/~lihq/en/'>Houqiang Li </a> </b>
 
 [[paper](https://arxiv.org/abs/2303.09295)] [[DiffusionForensics dataset]([BaiduDrive (password: dire)](https://pan.baidu.com/s/1Rdzc7l8P0RrJft0cW0a4Gg)] [[pre-trained model]([BaiduDrive (password: dire)](https://pan.baidu.com/s/1Rdzc7l8P0RrJft0cW0a4Gg)]
